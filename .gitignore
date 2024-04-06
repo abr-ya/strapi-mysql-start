@@ -80,7 +80,7 @@ $RECYCLE.BIN/
 ssl
 .idea
 nbproject
-public/uploads/*
+#public/uploads/*
 !public/uploads/.gitkeep
 
 ############################
@@ -106,6 +106,8 @@ coverage
 ############################
 
 .env
+.env_jino
+.env_link
 license.txt
 exports
 .strapi
