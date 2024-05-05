@@ -729,6 +729,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToMany',
       'api::user-cart.user-cart'
     >;
+    user_adresses: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::user-adress.user-adress'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -909,6 +914,46 @@ export interface ApiSliderSlider extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserAdressUserAdress extends Schema.CollectionType {
+  collectionName: 'user_adresses';
+  info: {
+    singularName: 'user-adress';
+    pluralName: 'user-adresses';
+    displayName: 'UserAdress';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    email: Attribute.Email;
+    phone: Attribute.String;
+    zip: Attribute.Integer;
+    address: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::user-adress.user-adress',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    userId: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-adress.user-adress',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-adress.user-adress',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUserCartUserCart extends Schema.CollectionType {
   collectionName: 'user_carts';
   info: {
@@ -973,6 +1018,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::product.product': ApiProductProduct;
       'api::slider.slider': ApiSliderSlider;
+      'api::user-adress.user-adress': ApiUserAdressUserAdress;
       'api::user-cart.user-cart': ApiUserCartUserCart;
     }
   }

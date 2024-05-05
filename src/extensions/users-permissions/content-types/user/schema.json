@@ -71,6 +71,12 @@
       "relation": "manyToMany",
       "target": "api::user-cart.user-cart",
       "mappedBy": "users_permissions_users"
+    },
+    "user_adresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-adress.user-adress",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

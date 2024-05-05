@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_adresses",
+  "info": {
+    "singularName": "user-adress",
+    "pluralName": "user-adresses",
+    "displayName": "UserAdress"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "integer"
+    },
+    "address": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_adresses"
+    },
+    "userId": {
+      "type": "integer"
+    }
+  }
+}
